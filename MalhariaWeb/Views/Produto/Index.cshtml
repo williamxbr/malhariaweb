@@ -1,0 +1,78 @@
+﻿@model IEnumerable<MalhariaWeb.Models.PRODUTO>
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
+        </ul>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                Produto
+                <div class="pull-right">
+                    <span class="clickable filter" data-toggle="tooltip" title="Toggle table filter" data-container="body">
+                        <i class="glyphicon glyphicon-filter"></i>
+                    </span>
+                </div>
+            </div>
+            <div class="panel-body">
+                <input type="text" class="form-control" id="dev-table-filter" data-action="filter" data-filters="#Grid1" placeholder="Filtro Produto" />
+
+                <p>
+                    <input type="button" class="btn btn-success" title="Delete" value="Novo" onclick="location.href='@Url.Action("Create")    '" />
+                    <a id="modal-592252" href="#modal-container-592252" role="button" class="btn btn-danger" data-toggle="modal">Excluir</a>
+                </p>
+
+                <div id="gridContent">
+                    @{WebGrid grid = new WebGrid(Model, rowsPerPage: 4);}
+                    @grid.GetHtml(
+                              htmlAttributes: new { @class = "table table-bordered", @id = "Grid1" },
+                              columns: grid.Columns(
+                                                     grid.Column(String.Empty, format: @<text>@Html.CheckBox("deleteInputs", new { Value = @item.ID_PRODUTO })</text>),
+                                                     grid.Column("CODIGO_PRODUTO", "Código"),
+                                                     grid.Column("NOME_PRODUTO", "Nome Produto"),
+                                                     grid.Column("UNIDADE_MEDIDA.NOME_UNIDADE_MEDIDA", "Unidade Medida"),
+                                                     grid.Column("LINHA_PRODUTO.NOME_LINHA_PRODUTO", "Linha Produto"),
+                                                     grid.Column("TIPO_PRODUTO", "Tipo"),
+                                                     grid.Column(header: "Ação", format: @<text><a href="@Url.Action("Edit", new { id = item.ID_PRODUTO })" title="Edit">
+                                                            <img src="~/img/edit.png" />
+                                                        </a></text>)))
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-container-excluir" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Exclusão</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-2" style="float: left">
+                            <img alt="48x48" src="~/img/excluir_sels.png" />
+                        </div>
+                        <div>
+                            <p>
+                                <h4>Deseja excluir todos os itens selecionados?</h4>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" id="confirmFalse" data-dismiss="modal" aria-hidden="true">Não</button>
+                        <button class="btn btn-success" type="submit" id="confirmTrue">Sim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

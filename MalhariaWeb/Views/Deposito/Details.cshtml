@@ -1,0 +1,37 @@
+﻿@model MalhariaWeb.Models.DEPOSITO
+
+@{
+    Layout = null;
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DEPOSITO</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_DEPOSITO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_DEPOSITO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOME_DEPOSITO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOME_DEPOSITO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TIPO_DEPOSITO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TIPO_DEPOSITO)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.ID_DEPOSITO  }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

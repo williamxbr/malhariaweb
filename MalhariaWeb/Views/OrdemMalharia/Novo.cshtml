@@ -1,0 +1,56 @@
+﻿@model MalhariaWeb.Models.ORDEM_MALHARIA
+@{
+    ViewBag.Title = "Novo";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Ordem de Malharia</li>
+        </ul>
+
+        @using (Html.BeginForm("Novo", "OrdemMalharia", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <div class="panel panel-primary">
+                <div class="panel-heading">Ordem de Malharia</div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_PRODUTO, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.DropDownListFor(model => model.ID_PRODUTO, null ,new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ID_PRODUTO)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.QUANTIDADE, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.QUANTIDADE, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.QUANTIDADE)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_MAQUINA, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.DropDownListFor(model => model.ID_MAQUINA, null, new { @class = "form-control"})
+                            @Html.ValidationMessageFor(model => model.ID_MAQUINA)
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-success" type="submit" value="Salvar">Gerar Ordem</button>
+                </div>
+
+            </div>
+        }
+    </div>
+</div>

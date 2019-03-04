@@ -1,0 +1,121 @@
+﻿@model MalhariaWeb.Models.PESSOA
+@{
+    ViewBag.Title = "Novo registro de Pessoa";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Produto</li>
+        </ul>
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Cadastro de Pessoa</legend>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NOME_PESSOA, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.NOME_PESSOA, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.NOME_PESSOA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TIPO_PESSOA, new { @class = "col-md-2 control-label" })
+                    @Html.DropDownListFor(model => model.TIPO_PESSOA, Enum.GetValues(typeof(MalhariaWeb.Models.eTipoPessoa)).Cast<MalhariaWeb.Models.eTipoPessoa>().Select(v => new SelectListItem
+               {
+                   Text = v.ToString().Replace("_", " "),
+                   Value = ((int)v).ToString()
+               }), "[Select]")
+                    @Html.ValidationMessageFor(model => model.TIPO_PESSOA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LOGRADOURO, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.LOGRADOURO, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LOGRADOURO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BAIRRO, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.BAIRRO, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.BAIRRO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CIDADE, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.CIDADE, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CIDADE)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CEP, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.CEP, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CEP)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TELEFONE, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.TELEFONE, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TELEFONE)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FAX, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.FAX, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.FAX)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.INSCRICAO_FEDERAL, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.INSCRICAO_FEDERAL, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.INSCRICAO_FEDERAL)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.INSCRICAO_ESTADUAL, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.INSCRICAO_ESTADUAL, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.INSCRICAO_ESTADUAL)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EHCLIENTE, new { @class = "col-md-2 control-label" })
+                    @Html.CheckBoxFor(model => model.EHCLIENTE, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EHCLIENTE)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EHFORNECEDOR, new { @class = "col-md-2 control-label" })
+                    @Html.CheckBoxFor(model => model.EHFORNECEDOR)
+                    @Html.ValidationMessageFor(model => model.EHFORNECEDOR)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EHREPRESENTANTE, new { @class = "col-md-2 control-label" })
+                    @Html.CheckBoxFor(model => model.EHREPRESENTANTE)
+                    @Html.ValidationMessageFor(model => model.EHREPRESENTANTE)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EHTRANSPORTADORA, new { @class = "col-md-2 control-label" })
+                    @Html.CheckBoxFor(model => model.EHTRANSPORTADORA)
+                    @Html.ValidationMessageFor(model => model.EHTRANSPORTADORA)
+                </div>
+
+                <p>
+                    <button class="btn btn-success" type="submit" value="Salvar">Salvar</button>
+                </p>
+            </fieldset>
+        }
+
+
+    </div>
+
+
+</div>

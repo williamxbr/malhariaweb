@@ -1,0 +1,30 @@
+﻿@model MalhariaWeb.Models.LINHA_PRODUTO
+
+@{
+    Layout = null;
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>LINHA_PRODUTO</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_LINHA_PRODUTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_LINHA_PRODUTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOME_LINHA_PRODUTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOME_LINHA_PRODUTO)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.ID_LINHA_PRODUTO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

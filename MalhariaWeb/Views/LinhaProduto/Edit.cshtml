@@ -1,0 +1,43 @@
+﻿@model MalhariaWeb.Models.LINHA_PRODUTO
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-4">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Linha de Produto</li>
+        </ul>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Linha de Produto</div>
+            <div class="panel-body">
+
+                @using (Html.BeginForm("Edit", "LinhaProduto", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horinzontal", role = "role" }))
+                {
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+                        @Html.HiddenFor(model => model.ID_LINHA_PRODUTO)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NOME_LINHA_PRODUTO, new { @class = "col-md-2 control-label" })
+                            @Html.TextBoxFor(model => model.NOME_LINHA_PRODUTO, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NOME_LINHA_PRODUTO)
+                        </div>
+                        <br>
+                        <p>
+                            <input type="submit" class="btn btn-success" value="Salvar" />
+                        </p>
+                    </fieldset>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+

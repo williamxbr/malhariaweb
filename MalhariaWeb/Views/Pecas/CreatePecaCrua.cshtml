@@ -1,0 +1,114 @@
+﻿@model MalhariaWeb.Models.PECAS
+
+@{
+    ViewBag.Title = "Gerar Peça Crua";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+@using (Html.BeginForm("CreatePecaCrua", "Pecas", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horinzontal", role = "role" }))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="row">
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Cadastro de Pedidos</div>
+            <div class="panel-body">
+
+                <div class="col-md-12">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_PRODUTO, new { @class = "col-md-2 control-label" })
+                        @Html.DropDownList("ID_PRODUTO", String.Empty)
+                        @Html.ValidationMessageFor(model => model.ID_PRODUTO)
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_UNIDADE_MEDIDA, new { @class = "col-md-2 control-label" })
+                        @Html.DropDownList("ID_UNIDADE_MEDIDA", String.Empty)
+                        @Html.ValidationMessageFor(model => model.ID_UNIDADE_MEDIDA)
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_DEPOSITO, new { @class = "col-md-2 control-label" })
+                        @Html.DropDownList("ID_DEPOSITO", String.Empty)
+                        @Html.ValidationMessageFor(model => model.ID_DEPOSITO)
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.Label("Tecelão")
+                        @Html.DropDownList("ID_OPERADOR", String.Empty)
+                        @Html.ValidationMessageFor(model => model.ID_OPERADOR)
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_MAQUINA, new { @class = "col-md-2 control-label" })
+                        @Html.DropDownList("ID_MAQUINA", String.Empty)
+                        @Html.ValidationMessageFor(model => model.ID_MAQUINA)
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.QUALIDADE, new { @class = "col-md-2 control-label" })
+                        @Html.DropDownListFor(model => model.QUALIDADE, Enum.GetValues(typeof(MalhariaWeb.Models.eQualidadePeca)).Cast<MalhariaWeb.Models.eQualidadePeca>().Select(v => new SelectListItem
+               {
+                   Text = v.ToString().Replace("_", " "),
+                   Value = ((int)v).ToString()
+               }), "[Select]")
+                        @Html.ValidationMessageFor(model => model.QUALIDADE)
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.LARGURA, new { @class = "col-md-2 control-label" })
+                        @Html.TextBoxFor(model => model.LARGURA, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.LARGURA)
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.GRAMATURA, new { @class = "col-md-2 control-label" })
+                        @Html.TextBoxFor(model => model.GRAMATURA, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.GRAMATURA)
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_ACONDICIONAMENTO, new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_ACONDICIONAMENTO", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_ACONDICIONAMENTO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.METROS, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.METROS, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.METROS)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PESO_BRUTO, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.PESO_BRUTO, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PESO_BRUTO)
+                </div>
+
+            </div>
+            <div class="panel-footer">
+
+                <button class="btn btn-success" type="submit" value="Salvar">Gerar Peça</button>
+            </div>
+        </div>
+    </div>
+}
+

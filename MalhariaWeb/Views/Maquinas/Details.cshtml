@@ -1,0 +1,30 @@
+﻿@model MalhariaWeb.Models.MAQUINAS
+
+@{
+    Layout = null;
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>MAQUINAS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_MAQUINA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_MAQUINA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOME_MAQUINA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOME_MAQUINA)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.ID_MAQUINA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

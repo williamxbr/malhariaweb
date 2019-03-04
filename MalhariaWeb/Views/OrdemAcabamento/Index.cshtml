@@ -1,0 +1,82 @@
+﻿@model IEnumerable<MalhariaWeb.Models.ORDEM_ACABAMENTO>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_PRODUTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OBSERVACAO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_COR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.METROS_ORIGINAIS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KILOS_ORIGINAIS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.METROS_ACABADOS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KILOS_ACABADOS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.METROS_PROGRAMADOS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KILOS_PROGRAMADOS)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_PRODUTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OBSERVACAO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_COR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.METROS_ORIGINAIS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KILOS_ORIGINAIS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.METROS_ACABADOS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KILOS_ACABADOS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.METROS_PROGRAMADOS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KILOS_PROGRAMADOS)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID_ORDEM_ACABAMENTO }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID_ORDEM_ACABAMENTO }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID_ORDEM_ACABAMENTO })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,30 @@
+﻿@model MalhariaWeb.Models.ACONDICIONAMENTO
+
+@{
+    Layout = null;
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ACONDICIONAMENTO</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOME_ACONDICIONAMENTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOME_ACONDICIONAMENTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VALOR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VALOR)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.ID_ACONDICIONAMENTO }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

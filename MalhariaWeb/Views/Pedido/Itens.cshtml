@@ -1,0 +1,202 @@
+﻿@model MalhariaWeb.Models.PEDIDO
+@{
+    ViewBag.Title = "Itens";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>Pedido</li>
+        </ul>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Cadastro de Itens do Pedido</div>
+            <div class="panel-body">
+
+                <div class="col-md-1">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_PEDIDO, new { @class = "col-md-2 control-label" })
+                        @Html.DisplayFor(model => model.ID_PEDIDO)
+                    </div>
+                </div>
+
+                <div class="col-md-1">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_PESSOA, new { @class = "col-md-2 control-label" })
+                        @Html.DisplayFor(model => model.ID_PESSOA)
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.PESSOA.NOME_PESSOA, new { @class = "col-md-2 control-label" })
+                        @Html.DisplayFor(model => model.PESSOA.NOME_PESSOA)
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DATA_PEDIDO, new { @class = "col-md-2 control-label" })
+                        @Html.DisplayFor(model => model.DATA_PEDIDO)
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DATA_ENTREGA, new { @class = "col-md-2 control-label" })
+                        @Html.DisplayFor(model => model.DATA_ENTREGA)
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TIPO_PEDIDO, new { @class = "col-md-2 control-label" })
+                        @Html.DisplayFor(model => model.TIPO_PEDIDO)
+                    </div>
+                </div>
+
+                @{
+                    WebGrid grid = new WebGrid(ajaxUpdateContainerId: "gridContent");
+                    grid.Bind(source: Model.ITENSPEDIDO, columnNames: new string[] { "ID_ITENSPEDIDO" });
+                }
+
+                <div id="gridContent">
+
+                    @grid.GetHtml(
+                                   htmlAttributes: new { @class = "table table-bordered table-condensed table-hover" },
+                                   headerStyle: "sucess",
+                                   rowStyle: "webgrid-row-style",
+                                   alternatingRowStyle: "webgrid-row-style",
+                                   columns: grid.Columns(
+                                   grid.Column("", format: @<text>@Html.CheckBox("ID_ITENSPEDIDO", false, new { @value = @item.ID_ITENSPEDIDO })</text>),
+                                                                                   grid.Column("PRODUTO.NOME_PRODUTO", "Produto"),
+                                                                                   grid.Column("QUANTIDADE", "Quantidade"),
+                                                                                   grid.Column("PRECO", "Preço", style: "text-align : right"),
+                                                                                   grid.Column("COR.NOME_COR", "Cor"),
+                                                                                   grid.Column("UNIDADE_MEDIDA", "Unidade Medida"),
+                                                                                   grid.Column("DESCONTO", "Desconto")
+                                                                                   )
+                                                                                  )
+                </div>
+
+                <div class="panel-footer">
+
+                    <a id="modal-incluir-itenspedido" href="#modal-container-incluir-itenspedido" role="button" class="btn btn-success" data-toggle="modal" onclick="getPecas()"><i class="icon-plus icon-white"></i>Incluir Itens</a>
+                    <a class="btn btn-danger" onclick="DeletaPeca()"><i class="icon-trash icon-large icon-white"></i>Excluir Itens</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+    @using (Html.BeginForm("InserirItens", "ItensPedido", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "role" }))
+    {
+        <div id="modal-container-incluir-itenspedido" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalIncluir"><span class="label label-primary">Incluir Itens</span></h3>
+                    </div>
+                    <div class="modal-body">
+
+                        @Html.HiddenFor(model => model.ID_PEDIDO)
+
+                        <div class="form-group">
+                            @Html.Label("Produto", new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @*@Html.Editor("Produto")*@
+                                @Html.DropDownList("Produto", ViewBag.sProduto as SelectList, "Selecione o produto", new { id = "ID_PRODUTO", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Cor", new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.DropDownList("Cor", ViewBag.sCor as SelectList, "Selecione a cor", new { id = "ID_COR", @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Quantidade", new { @class = "col-md-2 control-label" })
+                            <div class="col-md-4">
+                                @Html.TextBox("Quantidade", String.Empty, new { @class = "form-control" })
+                            </div>
+                            @Html.Label("Preço", new { @class = "col-md-2 control-label" })
+                            <div class="col-md-4">
+                                @Html.TextBox("Preco", String.Empty, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label("Desconto", new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextBox("Desconto", String.Empty, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-success" type="submit" id="confirmTrue">Adicionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    function DeletaPeca() {
+        var linha = 0;
+        if (confirm("Tem certeza que gostaria de deletar as peças selecionadas?")) {
+            $('#gridContent table tr').each(function () {
+                if ($(this).find("input[id='ID_ORDEM_ACABAMENTO_PECAS']").length > 0) {
+                    if ($(this).find("input[id='ID_ORDEM_ACABAMENTO_PECAS']")[0].checked == true) {
+                        var data = { ID: ID_ORDEM_ACABAMENTO_PECAS[linha] };
+                        var temp = $(this);
+                        $.post("/OrdemAcabamentoPecas/DeletaPeca", { id: data.ID.value }, function (response) {
+                            if (response == true) {
+                                temp.remove();
+                            }
+                        });
+                    }
+                    linha++;
+                }
+            });
+
+        }
+    };
+</script>
+
+<style type="text/css">
+    tr.webgrid-row-style td:nth-child(3) {
+        text-align: right;
+    }
+
+    tr.webgrid-row-style td:nth-child(4) {
+        text-align: right;
+    }
+
+    tr.webgrid-row-style td:nth-child(7) {
+        text-align: right;
+    }
+
+    tr.sucess th:nth-child(3) {
+        text-align: right;
+    }
+
+    tr.sucess th:nth-child(4) {
+        text-align: right;
+    }
+
+    tr.sucess th:nth-child(7) {
+        text-align: right;
+    }
+</style>

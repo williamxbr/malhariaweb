@@ -1,0 +1,33 @@
+﻿@model MalhariaWeb.Models.COR
+
+@{
+    Layout = null;
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>COR</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_COR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_COR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOME_COR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOME_COR)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

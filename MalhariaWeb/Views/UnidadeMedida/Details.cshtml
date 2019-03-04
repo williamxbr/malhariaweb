@@ -1,0 +1,30 @@
+﻿@model MalhariaWeb.Models.UNIDADE_MEDIDA
+
+@{
+    Layout = null;
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>UNIDADE_MEDIDA</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_UNIDADE_MEDIDA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_UNIDADE_MEDIDA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOME_UNIDADE_MEDIDA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOME_UNIDADE_MEDIDA)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.ID_UNIDADE_MEDIDA }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

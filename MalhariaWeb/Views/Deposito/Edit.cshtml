@@ -1,0 +1,49 @@
+﻿@model MalhariaWeb.Models.DEPOSITO
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-6">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Deposito</li>
+        </ul>
+
+        @using (Html.BeginForm("Edit", "Deposito", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horinzontal", role = "role" }))
+        {
+            @Html.ValidationSummary(true)
+            <div class="panel panel-primary">
+                <div class="panel-heading">Deposito</div>
+                <div class="panel-body">
+                    @Html.HiddenFor(model => model.ID_DEPOSITO)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NOME_DEPOSITO, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.NOME_DEPOSITO, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NOME_DEPOSITO)
+                        </div>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.TIPO_DEPOSITO, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.DropDownListFor(model => model.TIPO_DEPOSITO, new SelectList(Enum.GetValues(typeof(MalhariaWeb.Models.eTipoDeposito))), new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TIPO_DEPOSITO)
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div>
+                        <input type="submit" class="btn btn-success" value="Salvar" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

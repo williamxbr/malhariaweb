@@ -1,0 +1,173 @@
+﻿@model MalhariaWeb.Models.ORDEM_ACABAMENTO
+
+@{
+    ViewBag.Title = "Emissao";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Emissão Ordem de Acabamento</div>
+            <div class="panel-body">
+
+                @using (Html.BeginForm("Emissao", "OrdemAcabamento", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.ValidationSummary(true)
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_ORDEM_ACABAMENTO, new { @class = "col-md-2 control-label" })
+                        <div>
+                            @Html.DisplayFor(model => model.ID_ORDEM_ACABAMENTO)
+                        </div>
+                        @Html.LabelFor(model => model.PRODUTO.NOME_PRODUTO, new { @class = "label label-primary" })
+                        <div>
+                            @Html.DisplayFor(model => model.PRODUTO.NOME_PRODUTO)
+                        </div>
+                        @Html.LabelFor(model => model.COR.NOME_COR, new { @class = "label label-primary" })
+                        <div>
+                            @Html.DisplayFor(model => model.COR.NOME_COR)
+                        </div>
+                        @Html.ValidationMessageFor(model => model.ID_COR)
+
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.METROS_PROGRAMADOS, new { @class = "label label-info" })
+                        @Html.DisplayFor(model => model.METROS_PROGRAMADOS)
+                        @Html.ValidationMessageFor(model => model.METROS_PROGRAMADOS)
+                        @Html.LabelFor(model => model.KILOS_PROGRAMADOS, new { @class = "label label-info" })
+                        @Html.DisplayFor(model => model.KILOS_PROGRAMADOS)
+                        @Html.ValidationMessageFor(model => model.KILOS_PROGRAMADOS)
+
+                        @Html.LabelFor(model => model.METROS_ORIGINAIS, new { @class = "label label-info" })
+                        @Html.DisplayFor(model => model.METROS_ORIGINAIS)
+                        @Html.ValidationMessageFor(model => model.METROS_ORIGINAIS)
+                        @Html.LabelFor(model => model.KILOS_ORIGINAIS, new { @class = "label label-info" })
+                        @Html.DisplayFor(model => model.KILOS_ORIGINAIS)
+                        @Html.ValidationMessageFor(model => model.KILOS_ORIGINAIS)
+                    </div>
+
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.OBSERVACAO)
+                        @Html.DisplayFor(model => model.OBSERVACAO)
+                        @Html.ValidationMessageFor(model => model.OBSERVACAO)
+                    </div>
+
+
+                    WebGrid grid = new WebGrid(ajaxUpdateContainerId: "gridContent");
+                    grid.Bind(source: Model.ORDEM_ACABAMENTO_PECAS, columnNames: new string[] { "ID_PECA" });
+
+                    <div class="col-md-12">
+                        <div id="gridContent">
+
+                            @grid.GetHtml(
+    htmlAttributes: new { @class = "table table-bordered table-condensed table-hover" },
+    columns: grid.Columns(
+    grid.Column("", format: @<text>@Html.CheckBox("ID_ORDEM_ACABAMENTO_PECAS", false, new { @value = @item.ID_ORDEM_ACABAMENTO_PECAS })</text>),
+grid.Column("ID_PECA", "#Peça"),
+grid.Column("PESO", "Peso"),
+grid.Column("METROS", "Metros")
+)
+)
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="panel-footer">
+                <a id="modal-incluir-pecas-oa" href="#modal-container-incluir-pecas-oa" role="button" class="btn btn-success" data-toggle="modal" onclick="getPecas()"><i class="icon-plus icon-white"></i>Incluir Peças</a>
+                <a class="btn btn-danger" onclick="DeletaPeca()"><i class="icon-trash icon-large icon-white"></i>Excluir Peças</a>
+                <input type="button" class="btn btn-success" onclick="EmitirOrdem()" value="Emitir Ordem">
+            </div>
+
+            <div id="modal-container-incluir-pecas-oa" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h4 id="myModalIncluir">Escolher peças</h4>
+                        </div>
+                        @using (Html.BeginForm("InserirPecas", "OrdemAcabamentoPecas"))
+                        {
+                            <div class="modal-body">
+                                @Html.HiddenFor(model => model.ID_ORDEM_ACABAMENTO)
+                                <div id="TabelaPeca">
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-success" type="submit" id="confirmTrue">Adicionar</button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div id="modal-container-excluir-pecas-oa" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            <h3 id="myModalExcluir">Exclusão</h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-md-2" style="float: left">
+                                <img alt="48x48" src="~/img/excluir_sels.png" />
+                            </div>
+                            <div>
+                                <p>Deseja excluir todos os itens selecionados?</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-danger" id="confirmFalse" data-dismiss="modal" aria-hidden="true">Não</button>
+                            <button class="btn btn-success" id="confirmTrue" onclick="DeletaPeca()">Sim</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function getPecas() {
+            var modelo = {}
+            modelo.produto = $("#ID_PRODUTO").val();
+            $.getJSON("/Pecas/GetPecasCruas", modelo, function (data) {
+                $("#Teste9").remove();
+                $("#TabelaPeca").append("<table class='table table-bordered' id='Teste9'></table>");
+                $("#Teste9").append("<tr><th></th><th>#Peça</th><th>Peso Liquido</th><th>Metros</th><th>Maquina</th></tr>");
+                $.each(data, function (index, d) {
+                    $("#Teste9").append("<tr><td><input id='checkboxPecas' type='checkbox' value='" + d.ID_PECA + "' name='checkboxPecas'/></td><td>" + d.ID_PECA + "</td><td>" + d.PESO_LIQUIDO + "</td><td>" + d.METROS + "</td><td>" + d.MAQUINAS.NOME_MAQUINA + "</td></tr>");
+                })
+            });
+        };
+        function DeletaPeca() {
+            var linha = 0;
+            if (confirm("Tem certeza que gostaria de deletar as peças selecionadas?")) {
+                $('#gridContent table tr').each(function () {
+                    if ($(this).find("input[id='ID_ORDEM_ACABAMENTO_PECAS']").length > 0) {
+                        if ($(this).find("input[id='ID_ORDEM_ACABAMENTO_PECAS']")[0].checked == true) {
+                            var data = { ID: ID_ORDEM_ACABAMENTO_PECAS[linha] };
+                            var temp = $(this);
+                            $.post("/OrdemAcabamentoPecas/DeletaPeca", { id: data.ID.value }, function (response) {
+                                if (response == true) {
+                                    temp.remove();
+                                }
+                            });
+                        }
+                        linha++;
+                    }
+                });
+
+            }
+        };
+        function EmitirOrdem() {
+            if (confirm("Tem certeza que gostaria de emitir essa ordem?")) {
+                var ordem = $('#ID_ORDEM_ACABAMENTO').val();
+                $.post("/OrdemAcabamento/Emitir", { id: ordem }, function (response) {
+                    if (response == true) {
+                        document.location = '/OrdemAcabamento/Programado';
+                    }
+                })
+            }
+        }
+    </script>

@@ -1,0 +1,73 @@
+﻿@model MalhariaWeb.Models.ORDEM_ACABAMENTO
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<div class="row-fluid">
+    <div class="span12">
+
+        <ul class="breadcrumb">
+            <li>
+                <li>@Html.ActionLink("Home","Index","Home")</li> <span class="divider">/</span>
+            </li>
+            <li>
+                <li class="active">Cadastro</li> <span class="divider">/</span>
+            </li>
+            <li>@Html.ActionLink("Produto"  , "Index" , "Produto")</li>
+        </ul>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_PRODUTO)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ID_PRODUTO",String.Empty)
+            @Html.ValidationMessageFor(model => model.ID_PRODUTO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_COR)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("ID_COR",String.Empty)
+            @Html.ValidationMessageFor(model => model.ID_COR)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.METROS_PROGRAMADOS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.METROS_PROGRAMADOS)
+            @Html.ValidationMessageFor(model => model.METROS_PROGRAMADOS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KILOS_PROGRAMADOS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KILOS_PROGRAMADOS)
+            @Html.ValidationMessageFor(model => model.KILOS_PROGRAMADOS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OBSERVACAO)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.OBSERVACAO)
+            @Html.ValidationMessageFor(model => model.OBSERVACAO)
+        </div>
+    
+    
+        <p>
+                    <button class="btn btn-success" type="submit" value="Salvar">Create</button>
+        </p>
+}
+
+    </div>
+</div>
+

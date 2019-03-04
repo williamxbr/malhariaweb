@@ -1,0 +1,50 @@
+﻿@model MalhariaWeb.Models.PARAMETRO
+@{
+    ViewBag.Title = "Parametros";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-4">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Parametros</li>
+        </ul>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Parametros</div>
+            <div class="panel-body">
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+
+                        @Html.HiddenFor(model => model.ID_PARAMETRO)
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_DEPOSITO_CRU, "DEPOSITO CRU", new { @class = "col-md-2 control-label" })
+                            @Html.DropDownList("ID_DEPOSITO_CRU", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ID_DEPOSITO_CRU)
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_DEPOSITO_ACABADO, "DEPOSITO ACABADO", new { @class = "col-md-2 control-label" })
+                            @Html.DropDownList("ID_DEPOSITO_ACABADO", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ID_DEPOSITO_ACABADO)
+                        </div>
+                        <br>
+                        <p>
+                            <input type="submit" class="btn btn-success" value="Salvar" />
+                        </p>
+                    </fieldset>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

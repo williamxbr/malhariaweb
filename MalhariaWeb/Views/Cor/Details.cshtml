@@ -1,0 +1,30 @@
+﻿@model MalhariaWeb.Models.COR
+
+@{
+    Layout = null;
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>COR</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_COR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_COR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOME_COR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOME_COR)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.ID_COR }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

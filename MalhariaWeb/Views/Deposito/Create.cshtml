@@ -1,0 +1,47 @@
+﻿@model MalhariaWeb.Models.DEPOSITO
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Deposito</li>
+        </ul>
+
+        @using (Html.BeginForm("Create", "Deposito", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NOME_DEPOSITO, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.NOME_DEPOSITO)
+                    @Html.ValidationMessageFor(model => model.NOME_DEPOSITO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TIPO_DEPOSITO, new { @class = "col-md-2 control-label" })
+                    @Html.DropDownListFor(model => model.TIPO_DEPOSITO, Enum.GetValues(typeof(MalhariaWeb.Models.eTipoDeposito)).Cast<MalhariaWeb.Models.eTipoDeposito>().Select(v => new SelectListItem
+               {
+                   Text = v.ToString().Replace("_", " "),
+                   Value = ((int)v).ToString()
+               }), "[Select]")
+                    @Html.ValidationMessageFor(model => model.TIPO_DEPOSITO)
+                </div>
+
+                <p>
+                    <button class="btn btn-success" type="submit" value="Salvar">Salvar</button>
+                </p>
+            </fieldset>
+        }
+
+    </div>
+</div>
+

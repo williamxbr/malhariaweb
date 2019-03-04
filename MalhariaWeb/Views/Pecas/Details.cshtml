@@ -1,0 +1,177 @@
+﻿@model MalhariaWeb.Models.PECAS
+
+@{
+    Layout = null;
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PECAS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_PECA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_PECA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PRODUTO.NOME_PRODUTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PRODUTO.NOME_PRODUTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UNIDADE_MEDIDA.NOME_UNIDADE_MEDIDA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UNIDADE_MEDIDA.NOME_UNIDADE_MEDIDA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.METROS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.METROS)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DEPOSITO.NOME_DEPOSITO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DEPOSITO.NOME_DEPOSITO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ORDEM_ACABAMENTO.OBSERVACAO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ORDEM_ACABAMENTO.OBSERVACAO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OPERADOR.NOME_OPERADOR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OPERADOR.NOME_OPERADOR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DATA_ENTRADA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DATA_ENTRADA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HORA_ENTRADA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HORA_ENTRADA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SITUACAO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SITUACAO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PESO_LIQUIDO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PESO_LIQUIDO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.COR.NOME_COR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.COR.NOME_COR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QUALIDADE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QUALIDADE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TIPO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TIPO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ACONDICIONAMENTO.NOME_ACONDICIONAMENTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ACONDICIONAMENTO.NOME_ACONDICIONAMENTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DATA_SAIDA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DATA_SAIDA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MAQUINAS.NOME_MAQUINA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MAQUINAS.NOME_MAQUINA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LARGURA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LARGURA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.EH_PECA_DIVIDIDA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.EH_PECA_DIVIDIDA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.GRAMATURA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.GRAMATURA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PESO_BRUTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PESO_BRUTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TIPO_PECA.NOME_TIPO_PECA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TIPO_PECA.NOME_TIPO_PECA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PECA_ORIGEM)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PECA_ORIGEM)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

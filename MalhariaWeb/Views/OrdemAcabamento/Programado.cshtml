@@ -1,0 +1,77 @@
+﻿@model IEnumerable<MalhariaWeb.Models.ORDEM_ACABAMENTO>
+
+@{
+    ViewBag.Title = "Programado";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>@Html.ActionLink("Ordem de Acabamento", "Index", "OrdemAcabamento")</li>
+            <li class="active">Lista de Ordens Acabamentos Programadas</li>
+        </ul>
+
+
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID_ORDEM_ACABAMENTO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PRODUTO.NOME_PRODUTO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.COR.NOME_COR)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.METROS_PROGRAMADOS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KILOS_PROGRAMADOS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.METROS_ORIGINAIS)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KILOS_ORIGINAIS)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_ORDEM_ACABAMENTO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PRODUTO.NOME_PRODUTO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.COR.NOME_COR)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.METROS_PROGRAMADOS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KILOS_PROGRAMADOS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.METROS_ORIGINAIS)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KILOS_ORIGINAIS)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Emissão", "Emissao", new { id = item.ID_ORDEM_ACABAMENTO })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

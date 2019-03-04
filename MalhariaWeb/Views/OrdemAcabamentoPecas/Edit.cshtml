@@ -1,0 +1,54 @@
+﻿@model MalhariaWeb.Models.ORDEM_ACABAMENTO_PECAS
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ORDEM_ACABAMENTO_PECAS</legend>
+
+        @Html.HiddenFor(model => model.ID_ORDEM_ACABAMENTO_PECAS)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_ORDEM_ACABAMENTO, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(model => model.ID_ORDEM_ACABAMENTO, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ID_ORDEM_ACABAMENTO)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ID_PECA, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(model => model.ID_PECA, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ID_PECA)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PESO, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(model => model.PESO, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.PESO)
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.METROS, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(model => model.METROS, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.METROS)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

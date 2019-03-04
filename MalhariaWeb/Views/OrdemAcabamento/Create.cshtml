@@ -1,0 +1,85 @@
+﻿@model MalhariaWeb.Models.ORDEM_ACABAMENTO
+
+@{
+    ViewBag.Title = "Gerar Ordem";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Ordem de Acabamento</li>
+        </ul>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Ordem de Acabamento</div>
+            <div class="panel-body">
+
+                @using (Html.BeginForm("Create", "OrdemAcabamento", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horinzontal", role = "role" }))
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+                    <div class="col-md-12">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ID_PRODUTO, new { @class = "col-md-2 control-label" })
+                                @Html.DropDownList("ID_PRODUTO", String.Empty)
+                                @Html.ValidationMessageFor(model => model.ID_PRODUTO)
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ID_COR, new { @class = "col-md-2 control-label" })
+                                @Html.DropDownList("ID_COR", String.Empty)
+                                @Html.ValidationMessageFor(model => model.ID_COR)
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="col-md-12">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.METROS_PROGRAMADOS, new { @class = "col-md-2 control-label" })
+                                @Html.TextBoxFor(model => model.METROS_PROGRAMADOS, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.METROS_PROGRAMADOS)
+                            </div>
+
+                        </div>
+
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.KILOS_PROGRAMADOS, new { @class = "col-md-2 control-label" })
+                                @Html.TextBoxFor(model => model.KILOS_PROGRAMADOS, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.KILOS_PROGRAMADOS)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OBSERVACAO, new { @class = "col-md-2 control-label" })
+                                @Html.TextAreaFor(model => model.OBSERVACAO)
+                                @Html.ValidationMessageFor(model => model.OBSERVACAO)
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+    
+                    <p>
+                        <button class="btn btn-success" type="submit" value="Salvar">Gerar Ordem</button>
+                    </p>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+
+
+</script>

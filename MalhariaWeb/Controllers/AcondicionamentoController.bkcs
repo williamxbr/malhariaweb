@@ -1,0 +1,129 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using MalhariaWeb.Models;
+using MalhariaWeb.Repositories;
+
+namespace MalhariaWeb.Controllers
+{
+    public class AcondicionamentoController : Controller
+    {
+        private AcondicionamentoRepository acondicionamentoRepository;
+
+        public AcondicionamentoController() {
+            acondicionamentoRepository = new AcondicionamentoRepository();
+        }
+
+        //
+        // GET: /Acondicionamento/
+
+        public ActionResult Index()
+        {
+            return View(acondicionamentoRepository.GetAll());
+        }
+
+        //
+        // GET: /Acondicionamento/Details/5
+
+        public ActionResult Details(int id = 0)
+        {
+            ACONDICIONAMENTO acondicionamento = acondicionamentoRepository.FindBy(m => m.ID_ACONDICIONAMENTO == id).First();
+            if (acondicionamento == null)
+            {
+                return HttpNotFound();
+            }
+            return View(acondicionamento);
+        }
+
+        //
+        // GET: /Acondicionamento/Create
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        //
+        // POST: /Acondicionamento/Create
+
+        [HttpPost]
+        public ActionResult Create(ACONDICIONAMENTO acondicionamento)
+        {
+            if (ModelState.IsValid)
+            {
+                acondicionamentoRepository.Add(acondicionamento);
+                acondicionamentoRepository.Save();
+                return RedirectToAction("Index");
+            }
+
+            return View(acondicionamento);
+        }
+
+        //
+        // GET: /Acondicionamento/Edit/5
+
+        public ActionResult Edit(int id = 0)
+        {
+            ACONDICIONAMENTO acondicionamento = acondicionamentoRepository.FindBy(m => m.ID_ACONDICIONAMENTO == id).First();
+            if (acondicionamento == null)
+            {
+                return HttpNotFound();
+            }
+            return View(acondicionamento);
+        }
+
+        //
+        // POST: /Acondicionamento/Edit/5
+
+        [HttpPost]
+        public ActionResult Edit(ACONDICIONAMENTO acondicionamento)
+        {
+            if (ModelState.IsValid)
+            {
+                //acondicionamento
+                //ondicionamentoRepository.Edit();
+                acondicionamentoRepository.Edit(acondicionamento);
+                acondicionamentoRepository.Save();
+                //db.Entry(acondicionamento).State = EntityState.Modified;
+                
+                return RedirectToAction("Index");
+            }
+            return View(acondicionamento);
+        }
+
+        //
+        // GET: /Acondicionamento/Delete/5
+
+        public ActionResult Delete(int id = 0)
+        {
+            ACONDICIONAMENTO acondicionamento = acondicionamentoRepository.FindBy(m => m.ID_ACONDICIONAMENTO == id).First();
+            if (acondicionamento == null)
+            {
+                return HttpNotFound();
+            }
+            return View(acondicionamento);
+        }
+
+        //
+        // POST: /Acondicionamento/Delete/5
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            ACONDICIONAMENTO acondicionamento = acondicionamentoRepository.FindBy(m => m.ID_ACONDICIONAMENTO == id).First();
+            acondicionamentoRepository.Delete(acondicionamento);
+            acondicionamentoRepository.Save();
+            return RedirectToAction("Index");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            //acondicionamentoRepository.Dispose();
+            base.Dispose(disposing);
+        }
+    }
+}

@@ -1,0 +1,64 @@
+﻿@model MalhariaWeb.Models.PEDIDO
+@{
+    ViewBag.Title = "Novo";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<div class="row">
+
+    <div class="col-md-12">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li>Pedido</li>
+        </ul>
+
+        @using (Html.BeginForm("Novo", "Pedido", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+
+        {
+            @Html.ValidationSummary(true)
+            <div class="panel panel-primary">
+                <div class="panel-heading">Cadastro de Pedidos</div>
+                <div class="panel-body">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.ID_PESSOA, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.ID_PESSOA, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.ID_PESSOA)
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.DATA_ENTREGA, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.DATA_ENTREGA, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.DATA_ENTREGA)
+                        </div>
+
+                    </div>
+
+                    <div class="form-group">
+                            @Html.LabelFor(model => model.TIPO_PEDIDO, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-4">
+                            @Html.DropDownListFor(model => model.TIPO_PEDIDO, Enum.GetValues(typeof(MalhariaWeb.Models.eTipoPedido)).Cast<MalhariaWeb.Models.eTipoPedido>().Select(v => new SelectListItem
+               {
+                   Text = v.ToString().Replace("_", " "),
+                   Value = ((int)v).ToString()
+               }), "[Select]", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.TIPO_PEDIDO)
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <button class="btn btn-success" type="submit" value="Salvar">Salvar</button>
+                </div>
+            </div>
+        }
+
+
+    </div>
+
+
+</div>

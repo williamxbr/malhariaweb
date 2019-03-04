@@ -1,0 +1,164 @@
+﻿@model MalhariaWeb.Models.PECAS
+
+@{
+    Layout = null;
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Peças</li>
+        </ul>
+
+        @using (Html.BeginForm())
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>PECAS</legend>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_PRODUTO, "PRODUTO", new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_PRODUTO", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_PRODUTO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_UNIDADE_MEDIDA, "UNIDADE_MEDIDA", new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_UNIDADE_MEDIDA", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_UNIDADE_MEDIDA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.METROS, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.METROS, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.METROS)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_DEPOSITO, "DEPOSITO", new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_DEPOSITO", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_DEPOSITO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_ORDEM_ACABAMENTO, "ORDEM_ACABAMENTO", new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_ORDEM_ACABAMENTO", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_ORDEM_ACABAMENTO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_OPERADOR, "OPERADOR", new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_OPERADOR", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_OPERADOR)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DATA_ENTRADA, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.DATA_ENTRADA, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DATA_ENTRADA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.HORA_ENTRADA, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.HORA_ENTRADA, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.HORA_ENTRADA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.SITUACAO, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.SITUACAO, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SITUACAO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PESO_LIQUIDO, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.PESO_LIQUIDO, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PESO_LIQUIDO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_COR, "COR", new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_COR", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_COR)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.QUALIDADE, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.QUALIDADE, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.QUALIDADE)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TIPO_PECA, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.TIPO_PECA, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TIPO_PECA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_ACONDICIONAMENTO, "ACONDICIONAMENTO", new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_ACONDICIONAMENTO", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_ACONDICIONAMENTO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DATA_SAIDA, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.DATA_SAIDA, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DATA_SAIDA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_MAQUINA, "MAQUINAS", new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_MAQUINA", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_MAQUINA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.LARGURA, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.LARGURA, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.LARGURA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EH_PECA_DIVIDIDA, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.EH_PECA_DIVIDIDA, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.EH_PECA_DIVIDIDA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.GRAMATURA, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.GRAMATURA, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.GRAMATURA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PESO_BRUTO, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.PESO_BRUTO, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PESO_BRUTO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_TIPO_PECA, "TIPO_PECA", new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_TIPO_PECA", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_TIPO_PECA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.PECA_ORIGEM, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.PECA_ORIGEM, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.PECA_ORIGEM)
+                </div>
+
+                <p>
+                    <input type="submit" value="Create" />
+                </p>
+            </fieldset>
+        }
+
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>

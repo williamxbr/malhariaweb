@@ -1,0 +1,65 @@
+﻿@model MalhariaWeb.Models.PRODUTO
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Produto</li>
+        </ul>
+
+
+        @using (Html.BeginForm("Create", "Produto", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horinzontal", role = "role" }))
+        {
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NOME_PRODUTO, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.NOME_PRODUTO, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.NOME_PRODUTO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_UNIDADE_MEDIDA, "UNIDADE_MEDIDA", new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_UNIDADE_MEDIDA", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_UNIDADE_MEDIDA)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CODIGO_PRODUTO, new { @class = "col-md-2 control-label" })
+                    @Html.TextBoxFor(model => model.CODIGO_PRODUTO, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.CODIGO_PRODUTO)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ID_LINHA_PRODUTO, "LINHA_PRODUTO", new { @class = "col-md-2 control-label" })
+                    @Html.DropDownList("ID_LINHA_PRODUTO", String.Empty)
+                    @Html.ValidationMessageFor(model => model.ID_LINHA_PRODUTO)
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.TIPO_PRODUTO, new { @class = "col-md-2 control-label" })
+                    @Html.DropDownListFor(model => model.TIPO_PRODUTO, Enum.GetValues(typeof(MalhariaWeb.Models.eTipoProduto)).Cast<MalhariaWeb.Models.eTipoProduto>().Select(v => new SelectListItem
+               {
+                   Text = v.ToString().Replace("_", " "),
+                   Value = ((int)v).ToString()
+               }), "[Select]")
+                    @Html.ValidationMessageFor(model => model.TIPO_PRODUTO)
+                </div>
+                <p>
+                    <button class="btn btn-success" type="submit" value="Salvar">Create</button>
+                </p>
+            </fieldset>
+        }
+
+    </div>
+</div>
+

@@ -1,0 +1,70 @@
+﻿@model MalhariaWeb.Models.PRODUTO
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
+        </ul>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Produto</div>
+            <div class="panel-body">
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+
+                        @Html.HiddenFor(model => model.ID_PRODUTO)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NOME_PRODUTO, new { @class = "col-md-2 control-label" })
+                            @Html.TextBoxFor(model => model.NOME_PRODUTO, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NOME_PRODUTO)
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_UNIDADE_MEDIDA, "UNIDADE_MEDIDA", new { @class = "col-md-2 control-label" })
+                            @Html.DropDownList("ID_UNIDADE_MEDIDA", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ID_UNIDADE_MEDIDA)
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CODIGO_PRODUTO, new { @class = "col-md-2 control-label" })
+                            @Html.TextBoxFor(model => model.CODIGO_PRODUTO, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.CODIGO_PRODUTO)
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_LINHA_PRODUTO, "LINHA_PRODUTO", new { @class = "col-md-2 control-label" })
+                            @Html.DropDownList("ID_LINHA_PRODUTO", String.Empty)
+                            @Html.ValidationMessageFor(model => model.ID_LINHA_PRODUTO)
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.TIPO_PRODUTO, new { @class = "col-md-2 control-label" })
+                            @Html.DropDownListFor(model => model.TIPO_PRODUTO, new SelectList(Enum.GetValues(typeof(MalhariaWeb.Models.eTipoProduto))))
+                            @Html.ValidationMessageFor(model => model.TIPO_PRODUTO)
+                        </div>
+                        <br>
+                        <p>
+                            <input type="submit" class="btn btn-success" value="Salvar" />
+                        </p>
+                    </fieldset>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

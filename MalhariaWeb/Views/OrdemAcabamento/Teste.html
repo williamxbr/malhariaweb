@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Emissao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/bootstrap-responsive.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/img/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/img/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-confirm.js"></script>
+    <script type="text/javascript" src="/js/scripts.js"></script>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="page-header">
+                    <div class="row-fluid">
+                        <div class="span2">
+                            <img alt="140x140" src="/img/logomalhariaweb.png" />
+                        </div>
+                        <div class="span6">
+                            <h1>MalhariaWeb</h1>
+                        </div>
+                        <div class="span4">
+                        </div>
+                    </div>
+                </div>
+                <div class="navbar navbar-inverse">
+                    <div class="navbar-inner">
+                        <div class="container-fluid">
+                            <div class="nav-collapse collapse navbar-responsive-collapse">
+                                <ul class="nav">
+                                    <li class="dropdown">
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Cadastro<strong class="caret"></strong></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/Acondicionamento">Acondicionamento</a></li>
+                                            <li><a href="/Cor">Cor</a></li>
+                                            <li><a href="/Deposito">Deposito</a></li>
+                                            <li><a href="/LinhaProduto">Linha de Produto</a></li>
+                                            <li><a href="/Maquinas">Maquinas</a></li>
+                                            <li><a href="/Operador">Operador</a></li>
+                                            <li><a href="/Produto">Produto</a></li>
+                                            <li><a href="/UnidadeMedida">Unidade de Medida</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Planejamento<strong class="caret"></strong></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/Pecas/CreatePecaCrua">Pesagem de Pecas Cruas</a></li>
+                                            <li><a href="/OrdemAcabamento/Create">Gerar Ordem de Acabamento</a></li>
+                                            <li><a href="/OrdemAcabamento/Programado">Emitir Ordem de Acabamento</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Relatorios<strong class="caret"></strong></a>
+                                        <ul class="dropdown-menu">
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+
+<form action="/OrdemAcabamento/Emissao/1" method="post">    <fieldset>
+
+        <input data-val="true" data-val-number="O campo #Ordem deve ser um número." data-val-required="O campo #Ordem é obrigatório." id="ID_ORDEM_ACABAMENTO" name="ID_ORDEM_ACABAMENTO" type="hidden" value="1" />
+
+        <div class="editor-label">
+            <label for="ID_ORDEM_ACABAMENTO">#Ordem</label>
+        </div>
+        <div class="editor-field">
+            1
+        </div>
+
+        <div class="editor-label">
+            <label for="ID_PRODUTO">Produto</label>
+        </div>
+        <div class="editor-field">
+            1
+        </div>
+
+        <div class="editor-label">
+            <label for="ID_COR">Cor</label>
+        </div>
+        <div class="editor-field">
+            1002
+        </div>
+
+        <div class="editor-label">
+            <label for="METROS_ORIGINAIS">Metros Originais</label>
+        </div>
+        <div class="editor-field">
+            0
+        </div>
+
+        <div class="editor-label">
+            <label for="KILOS_ORIGINAIS">Kilos Originais</label>
+        </div>
+        <div class="editor-field">
+            0
+        </div>
+
+        <div class="editor-label">
+            <label for="METROS_PROGRAMADOS">Metros Programados</label>
+        </div>
+        <div class="editor-field">
+            400
+        </div>
+
+        <div class="editor-label">
+            <label for="KILOS_PROGRAMADOS">Kilos Programados</label>
+        </div>
+        <div class="editor-field">
+            100
+        </div>
+
+        <div class="editor-label">
+            <label for="OBSERVACAO">Observa&#231;&#227;o</label>
+        </div>
+        <div class="editor-field">
+            Primeira Ordem
+        </div>
+
+        <table class="table table-bordered">
+            <tr>
+                <th></th>
+                <th>#Peça</th>
+                <th>Peso</th>
+                <th>Metros</th>
+            </tr>
+
+
+        </table>
+<div id="Teste">
+    </div>
+
+        <a id="modal-592252" href="#modal-container-592252" role="button" class="btn btn-danger" data-toggle="modal" onclick="javascript:getPecas();">Incluir Peças</a>
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+</form>
+<div id="modal-container-592252" class="modal hide fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 id="myModalLabel">Escolher peças</h4>
+    </div>
+<form action="/InserirPecas/OrdemAcabamentoPecas" method="post">    <div class="modal-body">
+    
+    
+        <div  id="TabelaPeca">
+
+        </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success" type="submit" id="confirmTrue" >Adicionar</button>
+    </div>
+</form></div>
+
+
+<script type="text/javascript">
+    $(document).ready( function () {
+        $.getJSON("/Pecas/GetPecasCruas", null, function (data) {
+            $("#TabelaPeca").append("<table class='table table-bordered' id='Teste9'></table>");
+            $("#Teste9").append("<tr><th></th><th>#Peça</th><th>Peso Liquido</th><th>Metros</th></tr>");
+            $.each(data, function (index, d) {
+                $("#Teste9").append("<tr><td></td><td>1</td><td>15</td><td>56</td></tr>");
+            })
+        });
+    });
+
+    //$("TabelaPeca").html("");
+    //$.getJSON("/Pecas/GetPecasCruas",null, function(data)
+    //{
+    //    $.each(data.Result,function(indice,pecascruas)
+    //    {
+    //        $("TabelaPeca").append("<p>"+pecascruas[0]+"</p>")
+    //    })
+    //});
+</script>
+
+
+
+
+
+        </div>
+    </div>
+</body>
+</html>

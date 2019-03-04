@@ -1,0 +1,47 @@
+﻿@model MalhariaWeb.Models.ORDEM_ACABAMENTO_PECAS
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>ORDEM_ACABAMENTO_PECAS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_ORDEM_ACABAMENTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_ORDEM_ACABAMENTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_PECA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_PECA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PESO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PESO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.METROS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.METROS)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

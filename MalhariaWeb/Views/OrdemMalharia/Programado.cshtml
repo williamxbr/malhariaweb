@@ -1,0 +1,59 @@
+﻿@model IEnumerable<MalhariaWeb.Models.ORDEM_MALHARIA>
+
+@{
+    ViewBag.Title = "Programado";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-12">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>@Html.ActionLink("Ordem de Malharia", "Index", "OrdemMalharia")</li>
+            <li class="active">Lista de Ordens Acabamentos Programadas</li>
+        </ul>
+
+
+        <table class="table table-bordered">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID_ORDEM_MALHARIA)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PRODUTO.NOME_PRODUTO)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.QUANTIDADE)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ID_MAQUINA)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ID_ORDEM_MALHARIA)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PRODUTO.NOME_PRODUTO)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QUANTIDADE)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MAQUINAS.NOME_MAQUINA)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Emissão", "Emissao", new { id = item.ID_ORDEM_MALHARIA })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - Malharia Web</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <div>
+        <header>
+            <div>
+                <div>
+                    <h1>@Html.ActionLink("Home", "Index", "Home")</h1>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                            <li>@Html.ActionLink("Deposito", "Index", "Deposito")</li>
+                            <li>@Html.ActionLink("Linha de Produto", "Index", "LinhaProduto")</li>
+                            <li>@Html.ActionLink("Cor", "Index", "Cor")</li>
+                            <li>@Html.ActionLink("Produto", "Index", "Produto")</li>
+                            <li>@Html.ActionLink("Ordem de Beneficiamento", "Index", "OrdemBeneficiamento")</li>
+                </ul>
+            </nav>
+        </header>
+    </div>
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+                <p>&copy; @DateTime.Now.Year - Malharia Web</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+</html>

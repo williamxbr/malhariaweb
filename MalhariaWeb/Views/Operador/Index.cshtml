@@ -1,0 +1,68 @@
+﻿@model IEnumerable<MalhariaWeb.Models.OPERADOR>
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <ul class="breadcrumb">
+            <li>
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Operador</li>
+        </ul>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Operador</div>
+            <div class="panel-body">
+
+
+                <p>
+                    <input type="button" class="btn btn-success" title="Delete" value="Novo" onclick="location.href='@Url.Action("Create")    '" />
+                    <a id="modal-excluir" href="#modal-container-excluir" role="button" class="btn btn-danger" data-toggle="modal">Excluir</a>
+                </p>
+
+
+                <div id="gridContent">
+                    @{WebGrid grid = new WebGrid(Model, rowsPerPage: 4);}
+                    @grid.GetHtml(
+                              htmlAttributes: new { @class = "table table-bordered", @id = "Grid1" },
+                              columns: grid.Columns(
+                                                     grid.Column(String.Empty, format: @<text>@Html.CheckBox("deleteInputs", new { Value = @item.ID_OPERADOR })</text>),
+                                                     grid.Column("NOME_OPERADOR", "Operador"),
+                                                     grid.Column(header: "Ação", format: @<text><a href="@Url.Action("Edit", new { id = item.ID_OPERADOR })" title="Edit">
+                                                         <img src="~/img/edit.png" /></a></text>)))
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="modal-container-excluir" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalLabel">Exclusão</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-2" style="float: left">
+                            <img alt="48x48" src="~/img/excluir_sels.png" />
+                        </div>
+                        <div>
+                            <p>
+                                <h4>Deseja excluir todos os itens selecionados?</h4>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" id="confirmFalse" data-dismiss="modal" aria-hidden="true">Não</button>
+                        <button class="btn btn-success" type="submit" id="confirmTrue">Sim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

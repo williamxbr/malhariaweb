@@ -1,0 +1,44 @@
+﻿@model MalhariaWeb.Models.ORDEM_ACABAMENTO_PECAS
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ORDEM_ACABAMENTO_PECAS</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_ORDEM_ACABAMENTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_ORDEM_ACABAMENTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_PECA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_PECA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PESO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PESO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.METROS)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.METROS)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.ID_ORDEM_ACABAMENTO_PECAS }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

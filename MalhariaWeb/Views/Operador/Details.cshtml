@@ -1,0 +1,30 @@
+﻿@model MalhariaWeb.Models.OPERADOR
+
+@{
+    Layout = null;
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>OPERADOR</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_OPERADOR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_OPERADOR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOME_OPERADOR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOME_OPERADOR)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new {  id=Model.ID_OPERADOR }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

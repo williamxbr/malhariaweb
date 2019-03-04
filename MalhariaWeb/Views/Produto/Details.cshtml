@@ -1,0 +1,64 @@
+﻿@model MalhariaWeb.Models.PRODUTO
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>PRODUTO</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_PRODUTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_PRODUTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOME_PRODUTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOME_PRODUTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.UNIDADE_MEDIDA.NOME_UNIDADE_MEDIDA)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.UNIDADE_MEDIDA.NOME_UNIDADE_MEDIDA)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CODIGO_PRODUTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CODIGO_PRODUTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LINHA_PRODUTO.NOME_LINHA_PRODUTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LINHA_PRODUTO.NOME_LINHA_PRODUTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ID_COR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ID_COR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TIPO_PRODUTO.NOME_TIPO_PRODUTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TIPO_PRODUTO.NOME_TIPO_PRODUTO)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

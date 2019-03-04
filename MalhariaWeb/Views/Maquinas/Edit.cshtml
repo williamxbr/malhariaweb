@@ -1,0 +1,45 @@
+﻿@model MalhariaWeb.Models.MAQUINAS
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-4">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Maquinas</li>
+        </ul>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Máquinas</div>
+            <div class="panel-body">
+
+                @using (Html.BeginForm("Edit", "Maquinas", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horinzontal", role = "role" }))
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+                        @Html.HiddenFor(model => model.ID_MAQUINA)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NOME_MAQUINA, new { @class = "col-md-2 control-label" })
+                            @Html.TextBoxFor(model => model.NOME_MAQUINA, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NOME_MAQUINA)
+                        </div>
+                        <br>
+                        <p>
+                            <input type="submit" class="btn btn-success" value="Salvar" />
+                        </p>
+                    </fieldset>
+                }
+
+            </div>
+        </div>
+
+    </div>
+</div>
+

@@ -1,0 +1,214 @@
+﻿@model MalhariaWeb.Models.ORDEM_ACABAMENTO
+
+@{
+    ViewBag.Title = "Revisao";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-10">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Ordem de Acabamento</li>
+            <li>Revisão</li>
+        </ul>
+
+        @using (Html.BeginForm("Revisao", "OrdemAcabamento", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.ValidationSummary(true)
+            <div class="panel panel-primary">
+                <div class="panel-heading">Revisão</div>
+                <div class="panel-body">
+                    <fieldset disabled>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.ID_ORDEM_ACABAMENTO, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(model => model.ID_ORDEM_ACABAMENTO, new { @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(model => model.PRODUTO.NOME_PRODUTO, new { @class = "col-md-1 control-label" })
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.PRODUTO.NOME_PRODUTO, new { @class = "form-control" })
+                            </div>
+                            @Html.LabelFor(model => model.COR.NOME_COR, new { @class = "col-md-1 control-label" })
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(model => model.COR.NOME_COR, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.ID_COR)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.METROS_ORIGINAIS, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.METROS_ORIGINAIS, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.METROS_ORIGINAIS)
+                            </div>
+                            @Html.LabelFor(model => model.KILOS_ORIGINAIS, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.KILOS_ORIGINAIS, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.KILOS_ORIGINAIS)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.METROS_ACABADOS, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.METROS_ACABADOS, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.METROS_ACABADOS)
+                            </div>
+                            @Html.LabelFor(model => model.KILOS_ACABADOS, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-3">
+                                @Html.TextBoxFor(model => model.KILOS_ACABADOS, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.KILOS_ACABADOS)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OBSERVACAO, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.OBSERVACAO, new { @class = "form-control", @rows = "3" })
+                                @Html.ValidationMessageFor(model => model.OBSERVACAO)
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+
+
+            WebGrid grid = new WebGrid(ajaxUpdateContainerId: "gridContent");
+            grid.Bind(source: Model.ORDEM_ACABAMENTO_PECAS, columnNames: new string[] { "ID_PECA" });
+
+            <div id="gridContent">
+
+                @grid.GetHtml(
+    htmlAttributes: new { @class = "table table-bordered table-condensed table-hover" },
+    columns: grid.Columns(
+    grid.Column("", format: @<text><a id="modal-incluir-pecas-oa" href="#modal-container-incluir-pecas-oa" role="button" class="btn btn-success" data-toggle="modal" onclick="getPeca(@item.ID_PECA)"><i class="icon-plus icon-white"></i>Revisar</a></text>),
+grid.Column("ID_PECA", "#Peça"),
+grid.Column("PESO", "Peso"),
+grid.Column("METROS", "Metros")
+)
+)
+
+            </div>
+
+            <input type="button" class="btn btn-success" onclick="EncerrarOrdem()" value="Encerrar Ordem">
+
+
+        }
+
+        <div id="modal-container-incluir-pecas-oa" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 id="myModalIncluir">Gerar Peça Acabada</h4>
+                    </div>
+                    @using (Html.BeginForm("InserirPecaAcabada", "Pecas", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <div id="corpodiv" class="modal-body">
+                            <div id="TabelaPeca">
+                                @Html.HiddenFor(model => model.ID_ORDEM_ACABAMENTO)
+                                @Html.HiddenFor(model => model.ID_COR)
+                                @Html.HiddenFor(model => model.ID_PRODUTO)
+                                <div class="form-group">
+                                    @Html.Label("Qualidade", new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-4">
+                                        @Html.DropDownList("Qualidade", Enum.GetValues(typeof(MalhariaWeb.Models.eQualidadePeca)).Cast<MalhariaWeb.Models.eQualidadePeca>().Select(v => new SelectListItem
+               {
+                   Text = v.ToString().Replace("_", " "),
+                   Value = ((int)v).ToString()
+               }), new { @class = "form-control" })
+                                    </div>
+                                    @Html.Label("Metros", new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-4">
+                                        @Html.TextBox("Metros", String.Empty, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Largura", new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-4">
+                                        @Html.TextBox("Largura", String.Empty, new { @class = "form-control" })
+                                    </div>
+                                    @Html.Label("Acondicionamento", new { @class = "col-md-2 control-label" })
+                                    <div class="col-md-4">
+                                        @Html.DropDownList("Acondicionamento", (SelectList)ViewData["acondicionamento"], new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="pecarevisada">Essa peça já foi revisada</div>
+                        </div>
+                        <div class="modal-footer">
+                            <div id="divconfirmar"><button class="btn btn-success" type="submit" id="confirmTrue">Adicionar</button></div>
+                            <div id="divnaoconfirmar"><button class="btn btn-warning" type="reset" id="co nfirmFalse" data-dismiss="modal" aria-hidden="true">Retornar</button></div>
+                        </div>
+                    }
+                </div>
+            </div>
+
+        </div>
+
+        <div id="modal-container-excluir-pecas-oa" class="modal fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h3 id="myModalExcluir">Exclusão</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-md-2" style="float: left">
+                            <img alt="48x48" src="~/img/excluir_sels.png" />
+                        </div>
+                        <div>
+                            <p>
+                                <h4>Deseja excluir todos os itens selecionados?</h4>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" id="confirmFalse" data-dismiss="modal" aria-hidden="true">Não</button>
+                        <button class="btn btn-success" id="confirmTrue" onclick="DeletaPeca()">Sim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+            function getPeca(peca) {
+                $.getJSON("/Pecas/GetPecaCrua", { peca: peca }, function (data) {
+                    $("#Teste9").remove();
+                    $("#TabelaPeca").append("<div id='Teste9'></div>");
+                    $.each(data, function (index, d) {
+                        if (d.SITUACAO == 2) {
+                            $("#TabelaPeca").show();
+                            $("#divconfirmar").show();
+                            $("#pecarevisada").hide();
+                            $("#divnaoconfirmar").hide();
+                            $("#Teste9").append("<input id='checkboxPecas' type='hidden' value='" + d.ID_PECA + "' name='pecacrua'/>");
+                        }
+                        else {
+                            $("#TabelaPeca").hide();
+                            $("#divconfirmar").hide();
+                            $("#pecarevisada").show();
+                            $("#divnaoconfirmar").show();
+                        }
+                    })
+                });
+            };
+
+
+            function EncerrarOrdem() {
+                if (confirm("Tem certeza que gostaria de emitir essa ordem?")) {
+                    var ordem = $('#ID_ORDEM_ACABAMENTO').val();
+                    $.post("/OrdemAcabamento/Encerrar", { id: ordem }, function (response) {
+                        if (response == true) {
+                            document.location = '/OrdemAcabamento/Retornado';
+                        }
+                    });
+                }
+            }
+
+
+        </script>
+    </div>
+</div>

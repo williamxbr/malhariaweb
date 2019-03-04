@@ -1,0 +1,42 @@
+﻿@model MalhariaWeb.Models.COR
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Cor";
+}
+
+<div class="row">
+    <div class="col-md-4">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Cor</li>
+        </ul>
+
+
+        @using (Html.BeginForm("Edit", "Cor", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.ValidationSummary(true)
+            <div class="panel panel-primary">
+                <div class="panel-heading">Cor</div>
+                <div class="panel-body">
+
+                    @Html.HiddenFor(model => model.ID_COR)
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NOME_COR, new { @class = "col-md-2 control-label" })
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(model => model.NOME_COR, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NOME_COR)
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-footer">
+                    <input type="submit" class="btn btn-success" value="Salvar" />
+                </div>
+            </div>
+
+        }
+    </div>
+</div>

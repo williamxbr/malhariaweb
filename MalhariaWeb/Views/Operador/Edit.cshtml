@@ -1,0 +1,44 @@
+﻿@model MalhariaWeb.Models.OPERADOR
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-4">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>Operador</li>
+        </ul>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Operador</div>
+            <div class="panel-body">
+
+                @using (Html.BeginForm("Edit", "Operador", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horinzontal", role = "role" }))
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+                        @Html.HiddenFor(model => model.ID_OPERADOR)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NOME_OPERADOR, new { @class = "col-md-2 control-label" })
+                            @Html.TextBoxFor(model => model.NOME_OPERADOR, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NOME_OPERADOR)
+                        </div>
+                        <br>
+                        <p>
+                            <input type="submit" class="btn btn-success" value="Salvar" />
+                        </p>
+                    </fieldset>
+                }
+
+            </div>
+        </div>
+    </div>
+</div>
+

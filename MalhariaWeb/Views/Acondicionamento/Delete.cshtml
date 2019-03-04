@@ -1,0 +1,32 @@
+﻿@model MalhariaWeb.Models.ACONDICIONAMENTO
+
+@{
+    Layout = null;
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NOME_ACONDICIONAMENTO)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NOME_ACONDICIONAMENTO)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.VALOR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.VALOR)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

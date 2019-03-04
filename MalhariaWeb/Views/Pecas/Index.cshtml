@@ -1,0 +1,164 @@
+﻿@model IEnumerable<MalhariaWeb.Models.PECAS>
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-md-12">
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+        <table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_PECA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PRODUTO.NOME_PRODUTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UNIDADE_MEDIDA.NOME_UNIDADE_MEDIDA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.METROS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DEPOSITO.NOME_DEPOSITO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OPERADOR.NOME_OPERADOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATA_ENTRADA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HORA_ENTRADA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SITUACAO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PESO_LIQUIDO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COR.NOME_COR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QUALIDADE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_PECA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ACONDICIONAMENTO.NOME_ACONDICIONAMENTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DATA_SAIDA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MAQUINAS.NOME_MAQUINA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LARGURA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EH_PECA_DIVIDIDA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GRAMATURA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PESO_BRUTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_PECA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PECA_ORIGEM)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID_PECA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PRODUTO.NOME_PRODUTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UNIDADE_MEDIDA.NOME_UNIDADE_MEDIDA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.METROS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DEPOSITO.NOME_DEPOSITO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OPERADOR.NOME_OPERADOR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATA_ENTRADA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HORA_ENTRADA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SITUACAO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PESO_LIQUIDO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COR.NOME_COR)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QUALIDADE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO_PECA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ACONDICIONAMENTO.NOME_ACONDICIONAMENTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DATA_SAIDA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MAQUINAS.NOME_MAQUINA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LARGURA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EH_PECA_DIVIDIDA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GRAMATURA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PESO_BRUTO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIPO_PECA)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PECA_ORIGEM)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.ID_PECA }) |
+            @Html.ActionLink("Details", "Details", new {  id=item.ID_PECA }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.ID_PECA })
+        </td>
+    </tr>
+}
+
+</table>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+﻿@model MalhariaWeb.Models.UNIDADE_MEDIDA
+
+@{
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+    ViewBag.Title = "Edit";
+}
+
+<div class="row">
+    <div class="col-md-4">
+
+        <ul class="breadcrumb">
+            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+            <li class="active">Cadastro</li>
+            <li>@Html.ActionLink("Unidade Medida", "Index", "UnidadeMedida")</li>
+        </ul>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Unidade de Medida</div>
+            <div class="panel-body">
+
+
+                @using (Html.BeginForm())
+                {
+                    @Html.ValidationSummary(true)
+
+                    <fieldset>
+                        @Html.HiddenFor(model => model.ID_UNIDADE_MEDIDA)
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NOME_UNIDADE_MEDIDA, new { @class = "col-md-2 control-label" })
+                            @Html.TextBoxFor(model => model.NOME_UNIDADE_MEDIDA, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.NOME_UNIDADE_MEDIDA)
+                        </div>
+                        <br>
+                        <p>
+                            <input type="submit" class="btn btn-success" value="Salvar" />
+                        </p>
+                    </fieldset>
+                }
+            </div>
+        </div>
+
+    </div>
+</div>
+

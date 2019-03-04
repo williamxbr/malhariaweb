@@ -1,0 +1,102 @@
+﻿@model MalhariaWeb.Models.ORDEM_ACABAMENTO
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/_LayoutMalhariaWeb.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ORDEM_ACABAMENTO</legend>
+
+        @Html.HiddenFor(model => model.ID_ORDEM_ACABAMENTO)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_PRODUTO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ID_PRODUTO)
+            @Html.ValidationMessageFor(model => model.ID_PRODUTO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OBSERVACAO)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OBSERVACAO)
+            @Html.ValidationMessageFor(model => model.OBSERVACAO)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID_COR)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ID_COR)
+            @Html.ValidationMessageFor(model => model.ID_COR)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.METROS_ORIGINAIS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.METROS_ORIGINAIS)
+            @Html.ValidationMessageFor(model => model.METROS_ORIGINAIS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KILOS_ORIGINAIS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KILOS_ORIGINAIS)
+            @Html.ValidationMessageFor(model => model.KILOS_ORIGINAIS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.METROS_ACABADOS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.METROS_ACABADOS)
+            @Html.ValidationMessageFor(model => model.METROS_ACABADOS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KILOS_ACABADOS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KILOS_ACABADOS)
+            @Html.ValidationMessageFor(model => model.KILOS_ACABADOS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.METROS_PROGRAMADOS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.METROS_PROGRAMADOS)
+            @Html.ValidationMessageFor(model => model.METROS_PROGRAMADOS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.KILOS_PROGRAMADOS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.KILOS_PROGRAMADOS)
+            @Html.ValidationMessageFor(model => model.KILOS_PROGRAMADOS)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
